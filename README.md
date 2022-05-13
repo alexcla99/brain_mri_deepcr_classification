@@ -1,4 +1,4 @@
-## Implementation of a CNN for brain MRIs classification.
+# Implementation of a CNN for brain MRIs classification.
 
 Author: alexcla99  
 Version: 1.0.0
