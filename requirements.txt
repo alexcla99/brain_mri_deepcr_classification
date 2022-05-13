@@ -1,0 +1,3 @@
+tensorflow>=2.2.0 # The backend used to compute the model
+scipy>=1.8.0      # Algorithms for algebric problems solving
+nibabel>=3.2.2    # An utility to open nifti files
