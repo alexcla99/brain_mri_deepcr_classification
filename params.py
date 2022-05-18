@@ -6,7 +6,7 @@ model_params = {
     "filters": [32, 64, 128, 256],
     "ks": [3, 5],
     "pool_size": 2,
-    "units": 1,
+    "units": [1, 256],
     "dropout": .2
 }
 

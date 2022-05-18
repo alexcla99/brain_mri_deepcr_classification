@@ -20,8 +20,8 @@ def get_model() -> keras.Model :
     # Output block
     x = layers.AveragePooling3D()(x)
     x = layers.Flatten()(x)
-    x = layers.Dense(model_params["units"], activation="sigmoid")(x)
-    x = layers.Dense(model_params["units"], activation="sigmoid")(x)
+    x = layers.Dense(model_params["units"][1], activation="sigmoid")(x)
+    x = layers.Dense(model_params["units"][0], activation="sigmoid")(x)
     outputs = layers.Dropout(model_params["dropout"])(x)
     # Build and return the model
     model = keras.Model(inputs, outputs, name="3dcnn")
