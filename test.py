@@ -13,6 +13,8 @@ import tensorflow as tf
 import numpy as np
 import sys, os
 
+THRESHOLD = .5 # TODO test different values
+
 if __name__ == "__main__":
     """Load the model with its best parameters and test it."""
     if len(sys.argv) != 3:
@@ -44,8 +46,8 @@ if __name__ == "__main__":
             for e in x_test:
                 prediction = model.predict(np.expand_dims(e, axis=0))[0]
                 predictions.append(prediction)
-            normalize = lambda x: 0. if x < .5 else 1. # Normalizatino since the model is trained with few data 
-                                                       # and the output is given by a sigmoid activation function
+            normalize = lambda x: 0. if x < THRESHOLD else 1. # Normalizatino since the model is trained with few data 
+                                                              # and the output is given by a sigmoid activation function
             np.save(os.path.join(dest_path, "x_test_predictions.npy"), np.asarray([normalize(x) for x in predictions], dtype=np.float32), allow_pickle=False)
             np.save(os.path.join(dest_path, "y_test.npy"), y_test, allow_pickle=False)
             # End of the program
