@@ -39,7 +39,7 @@ Preprocess the dataset:
 ```Shell
 python3 preprocess_to_numpy
 ```
-The data is selected from a folder called "normalized_dataset" (containing the raw dataset to be preprocessed) and is preprocessed into the "preprocessed_dataset" folder.
+Data are selected from a folder called "normalized_dataset" (containing the raw dataset to be preprocessed) and are preprocessed into the "preprocessed_dataset" folder.
 
 Summarize the model:
 ```Shell
@@ -51,14 +51,14 @@ Train the model:
 python3 train.py <augment:bool> <debug:bool>
 # Example: python3 train.py True False
 ```
-The data to be used is selected from the "preprocessed_dataset" folder and the results are saved in the "results" folder.
+Data to be used are selected from the "preprocessed_dataset" folder and results are saved in the "results" folder.
 
 Test the model:
 ```Shell
 python3 test.py <augmented:bool> <debug:bool>
 # Example: python3 test.py False True
 ```
-The data to be used is selected from the "preprocessed_dataset" folder and the results are saved in the "results" folder.
+Data to be used are selected from the "preprocessed_dataset" folder and results are saved in the "results" folder.
 
 ### Many thanks to:
 
