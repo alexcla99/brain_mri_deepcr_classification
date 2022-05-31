@@ -83,3 +83,5 @@ Data to be used are selected from the "preprocessed_dataset" folder and results 
 	isbn="978-3-030-98253-9"
 }
 ```
+
+License: MIT
