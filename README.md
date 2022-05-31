@@ -84,4 +84,4 @@ Data to be used are selected from the "preprocessed_dataset" folder and results 
 }
 ```
 
-License: MIT
+License: MIT.
