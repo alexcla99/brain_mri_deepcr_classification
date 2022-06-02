@@ -4,7 +4,7 @@ import nibabel as nib
 import numpy as np
 import sys, os
 
-RANDOM_STATE = 1337
+RANDOM_SEED = 1337
 TRAIN_RATIO = .6
 VAL_RATIO = .2
 TEST_RATIO = .2
@@ -27,10 +27,10 @@ def load_datasets() -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarr
     control_labels = np.array([0. for _ in range(len(control_data))])
     print("Coma MRIs: " + str(len(coma_data)))
     print("Control MRIs: " + str(len(control_data)))
-    coma_x_train, coma_x_test, coma_y_train, coma_y_test = train_test_split(coma_data, coma_labels, test_size=1-TRAIN_RATIO, random_state=RANDOM_STATE)
-    coma_x_val, coma_x_test, coma_y_val, coma_y_test = train_test_split(coma_x_test, coma_y_test, test_size=TEST_RATIO/(TEST_RATIO+VAL_RATIO), random_state=RANDOM_STATE)
-    control_x_train, control_x_test, control_y_train, control_y_test = train_test_split(control_data, control_labels, test_size=1-TRAIN_RATIO, random_state=RANDOM_STATE)
-    control_x_val, control_x_test, control_y_val, control_y_test = train_test_split(control_x_test, control_y_test, test_size=TEST_RATIO/(TEST_RATIO+VAL_RATIO), random_state=RANDOM_STATE)
+    coma_x_train, coma_x_test, coma_y_train, coma_y_test = train_test_split(coma_data, coma_labels, test_size=1-TRAIN_RATIO, shuffle=False)
+    coma_x_val, coma_x_test, coma_y_val, coma_y_test = train_test_split(coma_x_test, coma_y_test, test_size=TEST_RATIO/(TEST_RATIO+VAL_RATIO), shuffle=False)
+    control_x_train, control_x_test, control_y_train, control_y_test = train_test_split(control_data, control_labels, test_size=1-TRAIN_RATIO, shuffle=False)
+    control_x_val, control_x_test, control_y_val, control_y_test = train_test_split(control_x_test, control_y_test, test_size=TEST_RATIO/(TEST_RATIO+VAL_RATIO), shuffle=False)
     print("Coma train MRIs: " + str(len(coma_x_train)))
     print("Coma test MRIs: " + str(len(coma_x_test)))
     print("Coma validation MRIs: " + str(len(coma_x_val)))
@@ -43,6 +43,7 @@ def load_datasets() -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarr
     y_train = np.concatenate((coma_y_train, control_y_train), axis=0)
     y_val = np.concatenate((coma_y_val, control_y_val), axis=0)
     y_test = np.concatenate((coma_y_test, control_y_test), axis=0)
+    np.random.seed(RANDOM_SEED)
     np.random.shuffle(x_train)
     np.random.shuffle(x_val)
     np.random.shuffle(x_test)
